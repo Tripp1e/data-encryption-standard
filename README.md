@@ -29,5 +29,7 @@ Data Encryption Standard in Python
 
 To run this demo:
 ```
-python des.py
+python3 des.py
 ```
+
+As you may notice, the encrypted is exactly the same as the decrypted, which is because of the missing feistel algorithm.
