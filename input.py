@@ -5,7 +5,7 @@ charpBlock = int(blockLength/charLength)
 message = ""
 
 def handleInput() :
-    message = "Hello World!"
+    message = input()
     binMessage = binOf(message)
     return blocksOf(binMessage)
 
