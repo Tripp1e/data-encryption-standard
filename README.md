@@ -26,3 +26,8 @@ Data Encryption Standard in Python
 ```
 
 ### To decrypt, it simply applies the same function(s) again in reverse order
+
+To run this demo:
+```
+python des.py
+```
