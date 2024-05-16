@@ -9,6 +9,7 @@ keyRotations = rd.choices([1,2], k=2)
 
 def main() :
     for block in ip.handleInput() :
+        print("Unencrypted: " + str(block))
         encrypted = transform(block)
         print("Enrypted: "+  str(encrypted))
         decrypted = transform(encrypted)
