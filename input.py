@@ -21,6 +21,7 @@ def handleOutput(unencrypted, decrypted) :
         print("Failure!")
     
 def binOf(stri) :
+    #return [(bin << charLength) | ord(stri[i]) for i in range(len(stri))]
     bin = 0
     for i in range(len(stri)) :
         bin = (bin << charLength) | ord(stri[i])
@@ -30,11 +31,5 @@ def blocksOf(intg, leng) :
     bits = 0
     while 2 ** bits < intg :
     	bits += 1
-    mask = int('1' * blockLength, 2)
-    print(bin(mask))
-    print(bits)
-    out = [(intg & (mask << i)) >> i for i in range(0, bits, leng)]
-    print([bin(a) for a in out])
-    return out
-    #return [(intg & (mask << 32)) >> 32, intg & mask]
-binOf("Hellooo")
+    mask = int('1' * leng, 2)
+    return [(intg & (mask << i)) >> i for i in range(0, bits, leng)]
