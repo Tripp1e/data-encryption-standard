@@ -1,11 +1,12 @@
-import des
+from des import key
+from des import keyRotations
 
 def getsubKey() :
     #Key is generated with 56 bits and PC 1 is just halving
     #for simplicity reasons.
-    halfs = splitKey(des.key)
+    halfs = splitKey(key)
     for i in range(len(halfs)) :
-        rot = des.keyRotations[i]
+        rot = keyRotations[i]
         bits = bin(halfs[i])[2:rot]
         print("Bits" + bits)
         rest = bin(halfs[i])[2:rot + 4:] + bits
@@ -16,4 +17,5 @@ def getsubKey() :
 def splitKey(key) :
     mask = int('1' * 28, 2)
     return [(key & (mask << 28)) >> 28, key & mask]
-getsubKey()
+    
+print(getsubKey())

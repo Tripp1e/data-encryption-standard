@@ -16,8 +16,7 @@ def main() :
         print("Decrypted: " + str(decrypted))
 
         ip.handleOutput(block, decrypted)
-
-
+        
 def transform(block) :
     rBlock, lBlock = splitBlock(block)
 
