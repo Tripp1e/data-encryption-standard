@@ -1,13 +1,15 @@
 import input as ip
 #import feistel as ft
-#import keyschedule as ks
-
+import keyschedule as ks
 import random as rd
 
-key = int(''.join(rd.choices(['0','1'], k=56)))
-keyRotations = rd.choices([1,2], k=2)
+
+mask32 = int('1'* 32, 2)
 
 def main() :
+    
+    ks.getSubKeys()
+
     for block in ip.handleInput() :
         print("Unencrypted: " + str(block))
         encrypted = transform(block)
@@ -21,12 +23,11 @@ def transform(block) :
     rBlock, lBlock = splitBlock(block)
 
     xBlock = rBlock ^ lBlock
-    rBlock = rBlock << int(ip.blockLength/2)
+    rBlock = rBlock << 32
     return rBlock | xBlock
 
 def splitBlock(intg) :
-    mask = int('1' * 32, 2)
-    return [(intg & (mask << 32)) >> 32, intg & mask]
+    return [(intg >> 32) & mask32, intg & mask32]
 
 main()
 
